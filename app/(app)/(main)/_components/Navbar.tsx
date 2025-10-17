@@ -91,7 +91,7 @@ function Navbar() {
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="items-center gap-2 hidden lg:flex">
+      <div className="items-center gap-2 hidden lg:flex h-full">
         {navbarItems.map((item) => (
           <NavbarItem
             key={item.href}
@@ -101,6 +101,23 @@ function Navbar() {
             {item.children}
           </NavbarItem>
         ))}
+
+        {/* Auth Buttons - Full Height */}
+        <div className="flex items-stretch h-full gap-0 ml-4">
+          <Button
+            asChild
+            variant="ghost"
+            className="h-full rounded-none px-6 hover:bg-gray-50 transition-colors duration-200"
+          >
+            <Link href={"/login"}>Log in</Link>
+          </Button>
+          <Button
+            asChild
+            className="h-full rounded-none px-6 bg-black text-white hover:bg-zinc-800 transition-colors duration-200"
+          >
+            <Link href={"/signup"}>Start selling</Link>
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -126,15 +143,6 @@ function Navbar() {
                     Musika.
                   </p>
                 </Link>
-                <SheetClose asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-9 w-9 hover:bg-gray-100"
-                  >
-                    <X className="h-5 w-5" />
-                  </Button>
-                </SheetClose>
               </div>
 
               {/* Navigation Items */}
@@ -149,6 +157,29 @@ function Navbar() {
                     {item.children}
                   </MobileNavbarItem>
                 ))}
+              </div>
+
+              {/* Auth Buttons in Mobile Menu */}
+              <div className="p-4 border-t space-y-3">
+                <SheetClose asChild>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full py-6 text-lg"
+                    onClick={handleNavItemClick}
+                  >
+                    <Link href={"/login"}>Log in</Link>
+                  </Button>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Button
+                    asChild
+                    className="w-full py-6 text-lg bg-black text-white hover:bg-zinc-800"
+                    onClick={handleNavItemClick}
+                  >
+                    <Link href={"/signup"}>Start selling</Link>
+                  </Button>
+                </SheetClose>
               </div>
 
               {/* Footer */}
